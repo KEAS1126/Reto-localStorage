@@ -42,5 +42,10 @@ input::placeholder{ color: rgba(255, 255, 255, 0.486); }
     margin-bottom: 2px;
 }
 
+.listar{
+    display: flex;
+    flex-direction: row;
+}
+
 
 

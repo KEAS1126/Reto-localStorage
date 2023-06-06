@@ -1,7 +1,7 @@
 var txt = "";
 var valoresMap = new Map();
-// var key = ''
 var expReg= /\d/i;
+var eliminar=document.querySelectorAll(".bto-eliminar");
 
 
 
@@ -18,31 +18,32 @@ function enviar() {
     }
     else{
             
-        let ramdom = Math.random(1000)
+        let ramdom = Math.round(Math.random()*1000)
         localStorage.setItem(ramdom, cliente);
         for (let i = 0; i < localStorage.length; i++) {
         var clave = localStorage.key(i);
         let valor = localStorage.getItem(clave);
         valoresMap.set(clave, valor);
         }
-        valoresMap.forEach((v,k) => listarMap(k, v))
+        valoresMap.forEach((v,c) => listarMap(v,c))
         document.getElementById("listar").innerHTML = `${txt}`
         
     }
 
 }
 
-
-function listarMap(clave, valor) {
-    txt += `<li>${valor} </li>
-    <button type="button" onclick="eliminarMap(clave)" class="bto-eliminar">Eliminar</button>`;
+function eliminarMap(clave) {
+    localStorage.removeItem(clave)
 }
 
-// function eliminarMap(clave) {
-//     localStorage.removeItem(clave);
-//     valores.forEach(listar);
-//     document.getElementById("listar").innerHTML = `${txt}`
-// }
+function listarMap(valor, clave) {
+    txt += `<li>${valor} </li> <button class="bto-eliminar"  id="${clave}">eliminar</button>`;
+}
+
+
+
+
+
 
 
 
