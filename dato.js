@@ -3,8 +3,6 @@ var valoresMap = new Map();
 var expReg= /\d/i;
 var eliminar=document.querySelectorAll(".bto-eliminar");
 
-
-
 function enviar() {
     txt = "";
     let cliente = document.getElementById("dato").value;
@@ -18,8 +16,11 @@ function enviar() {
     }
     else{
             
-        let ramdom = Math.round(Math.random()*1000)
-        localStorage.setItem(ramdom, cliente);
+        let clave_0 = Math.random().toString(36);
+        let clave_1= Date.now().toString();
+        let clave_2=clave_0+clave_1;
+        let clave_3=clave_2.substring(2)
+        localStorage.setItem(clave_3, cliente);
         for (let i = 0; i < localStorage.length; i++) {
         var clave = localStorage.key(i);
         let valor = localStorage.getItem(clave);
@@ -32,22 +33,15 @@ function enviar() {
 
 }
 
-function eliminarMap(clave) {
-    localStorage.removeItem(clave)
-}
+// function eliminarMap(clave) {
+//     var bto = document.getElementById()
+
+//         localStorage.removeItem(clave)
+     
+// }
 
 function listarMap(valor, clave) {
-    txt += `<li>${valor} </li> <button class="bto-eliminar"  id="${clave}">eliminar</button>`;
+    txt += `<li>${valor} </li> <button class="bto-eliminar" name="boton"  id="${clave}">eliminar</button>`;
 }
-
-
-
-
-
-
-
-
-
-
 
 
